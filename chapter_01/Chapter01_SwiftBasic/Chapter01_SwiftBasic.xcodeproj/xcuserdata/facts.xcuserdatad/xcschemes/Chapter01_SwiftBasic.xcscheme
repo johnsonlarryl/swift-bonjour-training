@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   version = "1.3">
+   <BuildAction>
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForRunning = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5CAF774083FB6E20CDE4FACC"
+               BuildableName = "Chapter01_SwiftBasic.app"
+               BlueprintName = "Chapter01_SwiftBasic"
+               ReferencedContainer = "container:Chapter01_SwiftBasic.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <LaunchAction
+      useCustomWorkingDirectory = "NO"
+      buildConfiguration = "Debug"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5CAF774083FB6E20CDE4FACC"
+            BuildableName = "Chapter01_SwiftBasic.app"
+            BlueprintName = "Chapter01_SwiftBasic"
+            ReferencedContainer = "container:Chapter01_SwiftBasic.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </LaunchAction>
+</Scheme>
