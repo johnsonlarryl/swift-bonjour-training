@@ -178,4 +178,30 @@ class BonjourNetworkService:NSObject, NetServiceDelegate{
         // update the status
         self.updateBonjourServiceStatus(status: ServiceStatus.WAITING_FOR_SERVER_MESSAGE)
     }
+
+    func netServiceDidResolveAddress(_ service: NetService) {
+
+        print(String(format: "%ld", service.port))
+
+        print("Name: " + service.hostName!)//        for data:Data? in service.addresses ?? [] {
+//            let addressBuffer = [Int8](repeating: 0, count: 100)
+
+//            let socketAddress = data?.bytes as? sockaddr_in
+//            let sockFamily = socketAddress?.sin_family
+//            if sockFamily == AF_INET {
+//                let addressStr = inet_ntop(sockFamily, &(socketAddress?.sin_addr), addressBuffer, MemoryLayout<addressBuffer>.size)
+//
+//                let port = ntohs(socketAddress.sin_port)
+//                if addressStr && port != 0 {
+//                    print("Found service at \(addressStr):\(port)")
+//                    let urlString = "http://\(addressStr):\(port)"
+//                    let url = URL(string: urlString)
+//                    if let anUrl = url {
+//                        UIApplication.shared.openURL(anUrl)
+//                    }
+//                }
+//            }
+//        }
+    }
+
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5CAF70C241E49671DF1887F9 /* BonjourNetworkDiscoveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF799626205378D433C7BD /* BonjourNetworkDiscoveryService.swift */; };
 		5CAF70EC47DD70596D190467 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF77D3AED533C5C7DBA70A /* Data.swift */; };
+		5CAF71197586401C4D185BC4 /* BonjourNetworkServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF7C5F0012E956306CF762 /* BonjourNetworkServiceDelegate.swift */; };
 		5CAF72759D4EC375E4E0A8B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CAF72AC7268445227A9D1B0 /* LaunchScreen.storyboard */; };
 		5CAF72A4B68C5DFFB2D3764B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF77E8441ED3952967DA0E /* ViewController.swift */; };
 		5CAF7375071F2C04152F47EC /* ServiceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF76E2B6DD084A8A9F6668 /* ServiceStatus.swift */; };
@@ -56,6 +57,7 @@
 		5CAF7B4B1A8BD8B109DDC4C0 /* Chapter_05_Bonjour_Programming.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chapter_05_Bonjour_Programming.xcdatamodel; sourceTree = "<group>"; };
 		5CAF7BF394EF9FEAD774CAB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		5CAF7C4A715FC04792FEBA9C /* Chapter_05_Bonjour_Programming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chapter_05_Bonjour_Programming.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CAF7C5F0012E956306CF762 /* BonjourNetworkServiceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonjourNetworkServiceDelegate.swift; sourceTree = "<group>"; };
 		5CAF7CE43E123B0F14AABB25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CAF7D11C209F153DB487877 /* Chapter_05_Bonjour_ProgrammingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter_05_Bonjour_ProgrammingUITests.swift; sourceTree = "<group>"; };
 		5CAF7DDB59C3BB75FD1455E1 /* Chapter_05_Bonjour_ProgrammingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter_05_Bonjour_ProgrammingTests.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				5CAF79C78EF1294E946766F4 /* Notification.swift */,
 				5CAF799626205378D433C7BD /* BonjourNetworkDiscoveryService.swift */,
 				5CAF77FF209FC5F70D587744 /* BonjourNetworkDiscoveryServiceCopy.swift */,
+				5CAF7C5F0012E956306CF762 /* BonjourNetworkServiceDelegate.swift */,
 			);
 			path = Chapter_05_Bonjour_Programming;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				5CAF7F0ECE366BEBF2CB0DFE /* Notification.swift in Sources */,
 				5CAF70C241E49671DF1887F9 /* BonjourNetworkDiscoveryService.swift in Sources */,
 				5CAF73D05DA6AD2E2C07ADE6 /* BonjourNetworkDiscoveryServiceCopy.swift in Sources */,
+				5CAF71197586401C4D185BC4 /* BonjourNetworkServiceDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

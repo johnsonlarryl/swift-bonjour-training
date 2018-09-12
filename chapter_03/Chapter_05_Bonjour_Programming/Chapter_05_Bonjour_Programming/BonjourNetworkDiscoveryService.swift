@@ -8,7 +8,8 @@ import Foundation
 
 class BonjourNetworkDiscoveryService:NSObject, NetServiceBrowserDelegate{
 
-    let SERVICE_TYPE:String = "_message._tcp"
+//    let SERVICE_TYPE:String = "_message._tcp"
+    let SERVICE_TYPE:String = "_https._tcp"
 
     let SERVICE_DOMAIN:String = "local"
 
@@ -52,7 +53,7 @@ class BonjourNetworkDiscoveryService:NSObject, NetServiceBrowserDelegate{
         DispatchQueue.main.async(execute: {
             self._browser = NetServiceBrowser()
             self._browser?.delegate = self
-            self._browser?.searchForServices(ofType: "_message._tcp", inDomain: "")
+            self._browser?.searchForServices(ofType: "_https._tcp", inDomain: "")
         })
     }
 
@@ -87,26 +88,72 @@ class BonjourNetworkDiscoveryService:NSObject, NetServiceBrowserDelegate{
 
     func netServiceBrowser(_ browser: NetServiceBrowser, didFind aNetService: NetService, moreComing: Bool) {
         services.append(aNetService)
-        print(String(format: "Got service %p with hostname %@\n", aNetService, aNetService.hostName ?? ""))
+
+        DispatchQueue.main.async(execute: {
+            let delegate = BonjourNetworkServiceDelegate(name: aNetService.name)
+            aNetService.delegate = delegate
+            aNetService.resolve(withTimeout: 5.0)
+        })
+
+        print("Resolved service")
+
+        // Find the IPV4 address
+        if let serviceIp = resolveIPv4(addresses: aNetService.addresses!) {
+            print("Found IPV4:", serviceIp)
+        } else {
+            print("Did not find IPV4 address")
+        }
+
+//        if let data = aNetService.txtRecordData() {
+//            let dict = NetService.dictionary(fromTXTRecord: data)
+//            let value = String(data: dict["hello"]!, encoding: String.Encoding.utf8)
+//
+//            print("Text record (hello):", value!)
+//            }
+//        print(String(format: "Got service %p with hostname %@\n", aNetService, aNetService.hostName ?? ""))
 
         if !moreComing {
             updateUI()
         }
     }
 
-    // Sent when a service disappears
+    func netServiceDidResolveAddress(sender: NetService) {
+        print(sender.addresses![0])
+    }
+
+    // Find an IPv4 address from the service address data
+    func resolveIPv4(addresses: [Data]) -> String? {
+        var result: String?
+
+        for addr in addresses {
+            let data = addr as NSData
+            var storage = sockaddr_storage()
+            data.getBytes(&storage, length: MemoryLayout<sockaddr_storage>.size)
+
+            if Int32(storage.ss_family) == AF_INET {
+                let addr4 = withUnsafePointer(to: &storage) {
+                    $0.withMemoryRebound(to: sockaddr_in.self, capacity: 1) {
+                        $0.pointee
+                    }
+                }
+
+                if let ip = String(cString: inet_ntoa(addr4.sin_addr), encoding: .ascii) {
+                    result = ip
+                    break
+                }
+            }
+        }
+
+        return result
+    }
+
     func netServiceBrowser(_ browser: NetServiceBrowser, didRemove aNetService: NetService, moreComing: Bool) {
-        while let elementIndex = services.index(of: aNetService) { services.remove(at: elementIndex) }
+        while let elementIndex = services.index(of: aNetService) {
+            services.remove(at: elementIndex)
+        }
 
         if !moreComing {
             updateUI()
         }
     }
-//
-//
-//
-//  The converted code is limited to 1 KB.
-//  Please Sign Up (Free!) to remove this limitation.
-//
-//  %< ----------------------------------------------------------------------------------------- %<
 }
